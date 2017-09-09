@@ -8,7 +8,7 @@
 #define warn(fmt, ...) do {printf("[WARN  %s:%s:%d] " fmt "\n", __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);} while(0)
 #define err(fmt, ...) do {printf("[ERROR %s:%s:%d] " fmt "\n", __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);} while(0)
 
-#if defined(_WIN32)
+#if defined(__WIN32__)
 #define usleep(_x) Sleep((_x)/1000)
 #endif
 

@@ -2,12 +2,14 @@
 #define CRTDBG_MAP_ALLOC
 #include <crtdbg.h>
 #endif
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
 #include <time.h>
-#include "Comm.h"
+
+#include "comm.h"
 #include "RTMPMgr.h"
 
 #ifdef __WIN32__
@@ -48,8 +50,7 @@ uint64_t os_get_reltime (void)
 {
 #ifdef __WIN32__
 	return (timeGetTime() * 1000ULL);
-#endif
-#ifdef __LINUX__
+#else
 	struct timespec tp;
 	clock_gettime(CLOCK_MONOTONIC, &tp);
 	return (tp.tv_sec * 1000000ULL + tp.tv_nsec / 1000ULL);

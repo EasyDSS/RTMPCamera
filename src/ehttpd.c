@@ -3,6 +3,7 @@
 #include <errno.h>
 #include <stdlib.h>
 
+#include "comm.h"
 #include "ehttpd.h"
 #include "http_parser.h"
 #include "queue.h"
@@ -10,9 +11,7 @@
 #ifdef __WIN32__
 #define FD_SETSIZE 1024
 #include <winsock2.h>
-#endif
-
-#ifdef __LINUX__
+#else
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -20,15 +19,6 @@
 #include <time.h>
 #include <arpa/inet.h>
 #include <netinet/in.h>
-#endif 
-
-#if 1
-#define dbg(fmt, ...) do {printf("[DEBUG %s:%s:%d] " fmt "\n", __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);} while(0)
-#define info(fmt, ...) do {printf("[INFO  %s:%s:%d] " fmt "\n", __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);} while(0)
-#define warn(fmt, ...) do {printf("[WARN  %s:%s:%d] " fmt "\n", __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);} while(0)
-#define err(fmt, ...) do {printf("[ERROR %s:%s:%d] " fmt "\n", __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);} while(0)
-#else
-#include "Comm.h"
 #endif
 
 #ifdef __WIN32__
@@ -37,9 +27,7 @@
 #define SK_EINTR	(WSAEINTR)
 typedef int SOCKLEN;
 #define snprintf _snprintf
-#endif
-
-#ifdef __LINUX__
+#else
 #define SOCKET_ERROR	(-1)
 #define INVALID_SOCKET  (-1)
 #define SK_EAGAIN   (EAGAIN)
@@ -53,8 +41,7 @@ static int sk_errno (void)
 {
 #ifdef __WIN32__
 	return WSAGetLastError();
-#endif
-#ifdef __LINUX__
+#else
 	return (errno);
 #endif
 }
@@ -65,8 +52,7 @@ static const char *sk_strerror (int err)
 	static char serr_code_buf[24];
 	sprintf(serr_code_buf, "WSAE-%d", err);
 	return serr_code_buf;
-#endif
-#ifdef __LINUX__
+#else
 	return strerror(err);
 #endif
 }
@@ -142,8 +128,7 @@ static void _free_client_context (struct ehttpd_client_context *c)
 
 #ifdef __WIN32__
 #include <mstcpip.h>
-#endif
-#ifdef __LINUX__
+#else
 #include <fcntl.h>
 #include <netinet/tcp.h>
 #endif
@@ -250,9 +235,7 @@ static int _ehttpd_set_client_socket (SOCKET sockfd)
 		if (ret == SOCKET_ERROR) {
 			warn("setsockopt SO_LINGER failed: %s", sk_strerror(sk_errno()));
 		}
-#endif
-
-#ifdef __LINUX__
+#else
 		int sndbufsiz = EHTTPD_MSG_MAX_SIZ;
 		int keepalive = 1;
 		int keepidle = 60;

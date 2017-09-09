@@ -1,14 +1,14 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "Comm.h"
+#include "comm.h"
 #include "RTMPMgr.h"
 #include "RTMPPushExt.h"
 #include "ehttpd.h"
 #include "cJSON.h"
 #include "einifile.h"
 
-#ifdef _WIN32
+#ifdef __WIN32__
 #include "w32pthreads.h"
 #define strdup _strdup
 #define snprintf _snprintf
@@ -723,7 +723,7 @@ static int _http_on_client_request (const ehttp_msg* reqmsg, ehttp_msg* resmsg, 
 	}
 
 	if (0 == strcmp(reqmsg->uri, "/reboot")) {
-#ifdef _WIN32
+#ifdef __WIN32__
 #else
 #endif
 	}

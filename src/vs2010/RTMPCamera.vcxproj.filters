@@ -18,9 +18,6 @@
     <ClCompile Include="..\einifile.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\getopt.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\http_parser.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -44,9 +41,6 @@
     <ClInclude Include="..\einifile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\getopt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\http_parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -54,9 +48,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\RTMPPushExt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Comm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\w32pthreads.h">
@@ -71,9 +62,15 @@
     <ClInclude Include="..\HiNetDevSDK\Include\hi_net_dev_sdk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\comm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\rtmpcam.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\README">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

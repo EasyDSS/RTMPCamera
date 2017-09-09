@@ -2,7 +2,7 @@
 #include <string.h>
 #include <errno.h>
 
-#include "Comm.h"
+#include "comm.h"
 #include "RTMPPushExt.h"
 #include "EasyRTMPAPI.h"
 #include "EasyAACEncoderAPI.h"

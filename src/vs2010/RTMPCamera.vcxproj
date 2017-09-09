@@ -81,7 +81,6 @@
     <ClCompile Include="..\cJSON.c" />
     <ClCompile Include="..\ehttpd.c" />
     <ClCompile Include="..\einifile.c" />
-    <ClCompile Include="..\getopt.c" />
     <ClCompile Include="..\http_parser.c" />
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\RTMPMgr.cpp" />
@@ -89,10 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\cJSON.h" />
-    <ClInclude Include="..\Comm.h" />
+    <ClInclude Include="..\comm.h" />
     <ClInclude Include="..\ehttpd.h" />
     <ClInclude Include="..\einifile.h" />
-    <ClInclude Include="..\getopt.h" />
     <ClInclude Include="..\HiNetDevSDK\Include\hi_net_dev_sdk.h" />
     <ClInclude Include="..\http_parser.h" />
     <ClInclude Include="..\RTMPMgr.h" />
@@ -100,6 +98,7 @@
     <ClInclude Include="..\w32pthreads.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\README" />
     <None Include="..\rtmpcam.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
