@@ -14,6 +14,7 @@
     <ProjectGuid>{74A2F105-10E7-4A12-AB95-E2CA360060F4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>vs2010</RootNamespace>
+    <ProjectName>RTMPCamera</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vs2010", "vs2010.vcxproj", "{74A2F105-10E7-4A12-AB95-E2CA360060F4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RTMPCamera", "RTMPCamera.vcxproj", "{74A2F105-10E7-4A12-AB95-E2CA360060F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
