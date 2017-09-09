@@ -1,0 +1,103 @@
+#状态
+GET /get_config HTTP/1.1
+
+
+
+#开启
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 19
+
+{"enable" : true}
+
+#关闭
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 20
+
+{"enable" : false}
+
+#更换设备源
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 23
+
+{"source" : "device"}
+
+#更换rtsp源0
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 82
+
+{"source" : "rtsp", "rtsp_url" : "rtsp://admin:123456@127.0.0.1:8554/live/chn0"}
+
+#更换rtsp源1
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 82
+
+{"source" : "rtsp", "rtsp_url" : "rtsp://admin:123456@127.0.0.1:8554/live/chn1"}
+
+#更换rtsp源2
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 82
+
+{"source" : "rtsp", "rtsp_url" : "rtsp://admin:123456@127.0.0.1:8554/live/chn2"}
+
+#错误的地址
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 77
+
+{"source" : "rtsp", "rtsp_url" : "//admin:123456@127.0.0.1:8554/live/chn0"}
+
+#更改rtmp地址0
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 57
+
+{"rtmp_url" : "rtmp://www.easydss.com:10085/live/0000"}
+
+#更改rtmp地址1
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 51
+
+{"rtmp_url" : "rtmp://192.168.213.129/live/0000"}
+
+#开启通道1
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 34
+
+{"channel" : 1, "enable" : true}
+
+#关闭通道1
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 35
+
+{"channel" : 1, "enable" : false}
+
+#更换通道1设备源
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 38
+
+{"channel" : 1, "source" : "device"}
+
+#更改通道1的rtsp源
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 97
+
+{"channel" : 1, "source" : "rtsp", "rtsp_url" : "rtsp://admin:123456@127.0.0.1:8554/live/chn0"}
+
+#更改通道1的rtmp地址
+POST /set_config HTTP/1.1
+Content-Type: application/json
+Content-Length: 72
+
+{"channel" : 1, "rtmp_url" : "rtmp://www.easydss.com:10085/live/1111"}
+
