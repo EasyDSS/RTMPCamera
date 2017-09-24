@@ -1,0 +1,33 @@
+
+
+OBJS  = cJSON.o ehttpd.o einifile.o http_parser.o
+OBJS += RTMPMgr.o RTMPPushExt.o 
+OBJS += main.o
+TAR = rtmpcam
+
+PLAT=hisiv100
+CC = arm-${PLAT}-linux-uclibcgnueabi-gcc
+CXX = arm-${PLAT}-linux-uclibcgnueabi-g++
+
+CFLAGS += -g -Wall -D_FILE_OFFSET_BITS=64 -D_LARGE_FILE -DHI_OS_LINUX
+CFLAGS += -I./libEasyRTMP/Include -I./libEasyAACEncoder/Include -I./libEasyRTSPClient/Include -I./HiNetDevSDK/Include
+LDFLAGS += -L./libEasyRTMP/Lib/${PLAT}_static -L./libEasyAACEncoder/Lib/${PLAT} -L./libEasyRTSPClient/Lib/${PLAT} -L./HiNetDevSDK/Lib/${PLAT}
+LDFLAGS += -leasyrtmp -leasyaacencoder -leasyrtspclient -lNetLib -lpthread
+
+#CFLAGS += -m32
+#LDFLAGS += -m32
+
+all: $(TAR)
+
+$(TAR) : $(OBJS)
+	$(CXX) $(CFLAGS) -o $@ $^ -lrt $(LDFLAGS)
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c $^
+
+%.o : %.cpp
+	$(CXX) $(CFLAGS) -c $^
+
+clean:
+	rm -f $(OBJS) $(TAR)
+

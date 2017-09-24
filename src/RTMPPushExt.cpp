@@ -37,11 +37,12 @@ Easy_I32 RTMPPushExt_Activate(const char* rtmpLicense, const char* aacEncLicense
         err("EasyRTMP_Activate fail %d", ret0);
     }
 
-	ret1 = 0;//EasyAACEncoder_Activate((char*)aacEncLicense);
+#ifndef __WIN32__
+	ret1 = Easy_AACEncoder_activate((char*)aacEncLicense);
     if (ret1 < 0) {
         err("EasyAACEncoder_Activate fail %d", ret1);
     }
-
+#endif
 	ret2 = EasyRTSP_Activate((char*)rtspLicense);
     if (ret2 < 0) {
         err("EasyRTSP_Activate fail %d", ret2);

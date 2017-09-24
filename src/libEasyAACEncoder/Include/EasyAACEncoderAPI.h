@@ -8,6 +8,8 @@
 #ifndef EasyAACEncoder_API_H
 #define	EasyAACEncoder_API_H
 
+#include "EasyTypes.h"
+
 #ifdef _WIN32
 #define Easy_API  __declspec(dllexport)
 #define Easy_APICALL  __stdcall
@@ -23,7 +25,7 @@ enum Law
 {
 	Law_ULaw	=	0, 		/**< U law */
 	Law_ALaw	=	1, 		/**< A law */
-	Law_PCM16	=	2, 		/**< 16 bit uniform PCM values. 原始 pcm 数据 */  
+	Law_PCM16	=	2, 		/**< 16 bit uniform PCM values. original pcm data */  
 	Law_G726	=	3		/**< G726 */
 };
 
@@ -64,13 +66,16 @@ typedef struct _initParam
 extern "C"
 {
 #endif
-	/* 创建AAC Encoder 返回为句柄值 */
+	/* Active EasyAACEncoder library */
+	Easy_API int Easy_APICALL Easy_AACEncoder_activate(char *license);
+
+	/* Create AAC Encoder Handle */
 	Easy_API EasyAACEncoder_Handle Easy_APICALL Easy_AACEncoder_Init(InitParam initPar);
 
-	/* 输入编码数据，返回编码后数据 */
+	/* Input original data, output the encoede AAC data */
 	Easy_API int Easy_APICALL Easy_AACEncoder_Encode(EasyAACEncoder_Handle handle, unsigned char* inbuf, unsigned int inlen, unsigned char* outbuf, unsigned int* outlen);
 
-	/* 释放AAC Encoder */
+	/* Close Encoder Handle */
 	Easy_API void Easy_APICALL Easy_AACEncoder_Release(EasyAACEncoder_Handle handle);
 
 #ifdef __cplusplus
